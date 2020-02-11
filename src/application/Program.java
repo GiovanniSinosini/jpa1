@@ -18,13 +18,19 @@ public class Program {
 		EntityManagerFactory emf = Persistence.createEntityManagerFactory("jpa1");
 		EntityManager em = emf.createEntityManager(); // creates connection to the database
 
-		em.getTransaction().begin();  // start database transaction
+		/*em.getTransaction().begin();  // start database transaction
 		em.persist(p1);  // send to the database
 		em.persist(p2);
 		em.persist(p3);
-		em.getTransaction().commit();  // finalize and confirm transaction
-		System.out.println("Done!");
+		em.getTransaction().commit();  // finalize and confirm transaction*/
 		
+		Pessoa p = em.find(Person.class, 2);   // search by id and instantiate
+		
+		System.out.println(p);
+		
+		System.out.println("Pronto!");
+		em.close();
+		emf.close();
 		
 		
 	}
