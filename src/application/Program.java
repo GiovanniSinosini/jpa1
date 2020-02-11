@@ -24,9 +24,11 @@ public class Program {
 		em.persist(p3);
 		em.getTransaction().commit();  // finalize and confirm transaction*/
 		
-		Pessoa p = em.find(Person.class, 2);   // search by id and instantiate
 		
-		System.out.println(p);
+		Pessoa p = em.find(Person.class, 2);   // search by id and instantiate
+		em.getTransaction().begin();
+		em.remove(p);
+		em.getTransaction().commit();
 		
 		System.out.println("Pronto!");
 		em.close();
